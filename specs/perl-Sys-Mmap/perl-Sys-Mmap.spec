@@ -66,7 +66,7 @@ find %{buildroot} -name .packlist -exec %{__rm} {} \;
 %changelog
 * Sat Jan 04 2014 Andrew Bauer <knnniggett@users.sourceforge.net>
 - Applied fix for CPAN bug #91483
-- https://rt.cpan.org/Public/Bug/Display.html?id=91483fix 
+- https://rt.cpan.org/Public/Bug/Display.html?id=91483 
 
 * Thu Feb 10 2011 Christoph Maser <cmaser@gmx.de> - 0.14-1
 - Updated to version 0.14.

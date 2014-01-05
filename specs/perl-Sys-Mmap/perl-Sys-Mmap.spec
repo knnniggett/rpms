@@ -10,12 +10,15 @@
 Summary: Perl module to use mmap to map in a file as a Perl variable
 Name: perl-Sys-Mmap
 Version: 0.14
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: Artistic/GPL
 Group: Applications/CPAN
 URL: http://search.cpan.org/dist/Sys-Mmap/
 
 Source: http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Sys-Mmap-%{version}.tar.gz
+
+Patch0: svtype-fix.patch
+
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: perl(DynaLoader)
@@ -35,6 +38,7 @@ perl-Sys-Mmap is a Perl module to use mmap to map in a file as a Perl variable.
 
 %prep
 %setup -n %{real_name}-%{version}
+%patch0 -p1 -b .svtype
 
 %build
 CFLAGS="%{optflags}" %{__perl} Makefile.PL INSTALLDIRS="vendor" PREFIX="%{buildroot}%{_prefix}"
@@ -60,6 +64,10 @@ find %{buildroot} -name .packlist -exec %{__rm} {} \;
 %{perl_vendorarch}/auto/Sys/Mmap/
 
 %changelog
+* Sat Jan 04 2014 Andrew Bauer <knnniggett@users.sourceforge.net>
+- Applied fix for CPAN bug #91483
+- https://rt.cpan.org/Public/Bug/Display.html?id=91483fix 
+
 * Thu Feb 10 2011 Christoph Maser <cmaser@gmx.de> - 0.14-1
 - Updated to version 0.14.
 
